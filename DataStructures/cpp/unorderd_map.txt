@@ -1,17 +1,10 @@
 "Dictionary in cpp"
 
-""
-Module Call
-""
 #include <unordered_map>
-
-
-""
-Intialising
-""
 unordered_map<int, int> m;
-m["i value for this key"] = i;
+
+m["i value for this key"] = i;    // inserting value in dict
 
 
-""Built in functions""
+// Built in functions
 m.count(t)                    // to check if certain t key is present in the map returns 1 when true

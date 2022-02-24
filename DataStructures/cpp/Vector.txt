@@ -1,0 +1,15 @@
+#include <vector>
+
+vector<int> y{2, 7, 11, 15};
+vector<vector<int>> A;                       // 2d matrix
+vector<int> output{x.twoSum(y, 9)};          // to store object vector of object x
+
+
+// print vector
+for (auto i = output.begin(); i != output.end(); ++i)
+    cout << *i << " ";
+
+
+// built ins
+nums[mid]                    // to access an element
+output.size()

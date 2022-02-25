@@ -2,6 +2,13 @@
 	"files.associations": {
 		"vector": "cpp",
 		"iostream": "cpp",
-		"ostream": "cpp"
+		"ostream": "cpp",
+		"cstdlib": "cpp",
+		"initializer_list": "cpp",
+		"list": "cpp",
+		"xhash": "cpp",
+		"xstring": "cpp",
+		"xutility": "cpp",
+		"unordered_map": "cpp"
 	}
 }

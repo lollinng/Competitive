@@ -15,6 +15,7 @@ int main()
     ListNode *x = new ListNode(0);
     ListNode *z = new ListNode(100);
     ListNode *y = new ListNode(10, z);
+    ListNode *a = z;
 
     x->next = y;
     while (x)

@@ -21,7 +21,7 @@ int main()
 
     test x;
     vector<int> output{x.twoSum(y, 9)}; // to store object vector of object x
-
+    output.push_back(1);                // to add element
     // print vector
     for (auto i = output.begin(); i != output.end(); ++i)
         cout << *i << " ";

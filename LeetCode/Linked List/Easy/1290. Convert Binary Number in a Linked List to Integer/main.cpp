@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-// Definition for singly-linked list.// just for testing
+//  Definition for singly-linked list.// just for testing
 struct ListNode
 {
     int val;

@@ -14,6 +14,8 @@
 		"algorithm": "cpp",
 		"numeric": "cpp",
 		"limits": "cpp",
-		"tuple": "cpp"
+		"tuple": "cpp",
+		"type_traits": "cpp",
+		"queue": "cpp"
 	}
 }

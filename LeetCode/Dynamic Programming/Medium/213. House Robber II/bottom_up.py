@@ -1,6 +1,6 @@
 """
-Logic - since 1st house and last house cant be robbed together we need to use prev house robber forumula for 2 cases one without 1st house and
-1 without last house
+Logic - since 1st house and last house cant be robbed together we need to use prev house robber forumula for 
+2 cases one without 1st house and 1 without last house
 
                                     nums = [1,2,3,1]
                         [2,3,1]                          [1,2,3]
@@ -39,7 +39,7 @@ class Solution:
 
             dp2[i] = max(dp2[i-1], dp2[i-2] + nums[i])
             dp1[i] = max(dp1[i-1], dp1[i-2] + nums[i])
-
+        print(dp1, dp2)
         return max(dp2[n-1], dp1[n-2])
 
     # without memorisation
@@ -61,4 +61,4 @@ class Solution:
 
 s = Solution()
 print(s.rob([1, 2, 3, 1]))
-print(s.rob([2, 3, 2]))
+# print(s.rob([2, 3, 2]))

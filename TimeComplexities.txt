@@ -1,0 +1,15 @@
+
+n^2 --> n --> logN 
+m*n --> m+n
+
+logN - binary Search
+n^2  - 2 for loops
+n    - 1 for loop
+m*n - 2d matrix traversek for loop with m rows and n columns
+m+n - when we use one loop on m and only traverse through n once using pointer , if they sorted 
+
+
+dynamic programming
+memonization (top_bottom) (recursion)                                  - time-O(n) space(2n) (n for recursion+n for array)
+tabulation  (bottom up)   (iteration)                                  - time-O(n) space(n) (n for dp array)
+using variables instead of dp array in tabulation (iteration&bottomup) - time-O(n) space(1) (1 for 3 variables used)

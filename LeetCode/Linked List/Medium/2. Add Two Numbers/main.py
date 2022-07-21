@@ -26,6 +26,8 @@ class Solution:
                 carry += l2.val
                 l2 = l2.next
             carry, remainder = divmod(carry, 10)
+            # remainder = carry%10
+            # carry = int(carry/10)
             sums.next = ListNode(remainder)
             sums = sums.next
         return ans.next

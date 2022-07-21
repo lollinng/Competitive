@@ -1,5 +1,8 @@
-# Definition for singly-linked list.
-from sympy import Le
+"""
+here we using 2 pointers . Fast poiter gets the headstart or starts from n and slow pointer starts from 0 . We then iterate 
+till the fast pointer reaches the end of array after reaching end slow  will be aligned as total_lenght - n that is what we 
+want and we skip the next element to form a list without nth element from the back 
+"""
 
 
 class ListNode:
@@ -13,7 +16,7 @@ class Solution:
 
         # Calculating length
         slow = fast = head
-        for i in range(n):
+        for _ in range(n):
             fast = fast.next
         if not fast:
             return head.next

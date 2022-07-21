@@ -19,7 +19,9 @@ def tribonacci(self, n):
     return recursion(n, memo)
 
 
-# 2) Bottom-Up Approach - Here we use a loop to start storing items into array from the left and iterate our way to the nth number . Since it doesnt contain any recursion it works better than other approch for big values of n
+# 2) Bottom-Up Approach - Here we use a loop to start storing items into array from the left and iterate our
+# way to the nth number . Since it doesnt contain any recursion it works better than other approch for big
+# values of n
 
 def tribonacci(self, n):
     if(n == 0):

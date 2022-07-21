@@ -8,15 +8,13 @@ class ListNode:
 class Solution:
     def middleNode(self, head):
         length = 0
-        tail = head
-        while(tail.next):
+        curr = head
+        while(curr):
             length += 1
-            tail = tail.next
-        if(length % 2 == 0):
-            length = int(length/2)
-        else:
-            length = int(length/2)+1
-        for i in range(length):
+            curr = curr.next
+        # if its odd it will give list starting from mid if its even it wil give list starting from second mid
+        # Eg - int(5/2) = 2      and int(6/2) = 3
+        for _ in range(0, int(length/2)):
             head = head.next
         return head
 

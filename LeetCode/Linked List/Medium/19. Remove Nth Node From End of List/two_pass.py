@@ -21,10 +21,10 @@ class Solution:
             return head.next
         else:
             # goining to node before n and changing nth nodes next to n-1 th node next
-            tail = head
-            for i in range(length-n-1):
-                tail = tail.next
-            tail.next = tail.next.next
+            temp = head
+            for _ in range(length-n-1):
+                temp = temp.next
+            temp.next = temp.next.next
             return head
 
 

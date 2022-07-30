@@ -7,9 +7,10 @@ In this question we were ask to decode a code which can have multiple ways to de
 3) if it does either of those we add the value of last index or second last index respectively to the dp array
 
 eg - s = 226 will have 3 ways to decode , 2 26 or 22 6 or 2 2 6
-[1, 1, 0, 0]
-[1, 1, 2, 0]
-[1, 1, 2, 3]
+iterations - 
+1) [1, 1, 0, 0] 
+2) [1, 1, 2, 0]
+3) [1, 1, 2, 3]
 here we can see it undestand 2 26 and 22 6 in 1st iteration
 and 2 2 6 in 2nd iteration
 

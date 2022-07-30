@@ -2,7 +2,13 @@ Q. Given an m x n binary matrix filled with 0's and 1's, find the largest square
 
 Example 1:
 
-Input: matrix = [["1","0","1","0","0"],["1","0","1","1","1"],["1","1","1","1","1"],["1","0","0","1","0"]]
+Input: matrix = 
+[
+    ["1","0","1","0","0"],
+    ["1","0","1","1","1"],
+    ["1","1","1","1","1"],
+    ["1","0","0","1","0"]
+]
 Output: 4
 
 Example 2:

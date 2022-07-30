@@ -8,9 +8,6 @@ dynamic approch
 2) we use the stored value till that elemtnt to find value of path for next element
 3) we keep iterating till we reach bottom right .
 4) In case of middle elements we take minium of both the possiblities available to get there
-
-
-
 question and first iteration - [[1, 3, 1], [1, 5, 1], [4, 2, 1]]
 [[1, 4, 1], [1, 5, 1], [4, 2, 1]]
 [[1, 4, 5], [1, 5, 1], [4, 2, 1]]

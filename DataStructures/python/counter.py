@@ -10,8 +10,8 @@ print(freq.values())                    # dict_values([3, 2, 1])
 
 # to count characters in string
 st = Counter("abcsds")
-print(st)
+print(st)                              # Counter({'s': 2, 'a': 1, 'b': 1, 'c': 1, 'd': 1})
 
 # convert dictionary into list of tupples
 c = Counter("abcsds")        # creating dictionary
-print(c.items())
+print(c.items())             # dict_items([('a', 1), ('b', 1), ('c', 1), ('s', 2), ('d', 1)])

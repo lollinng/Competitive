@@ -17,5 +17,8 @@
 		"tuple": "cpp",
 		"type_traits": "cpp",
 		"queue": "cpp"
-	}
+	},
+	"cSpell.words": [
+		"dicti"
+	]
 }

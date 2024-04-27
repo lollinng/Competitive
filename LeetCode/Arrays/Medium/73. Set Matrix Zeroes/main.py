@@ -20,7 +20,7 @@ class Solution:
             for j in range(self.cols):
                 if temp[i][j] == 0:
                     self.helper(i,j,matrix)
-                    continue
+
         return matrix
 
     
@@ -32,3 +32,19 @@ class Solution:
             matrix[row][j] = 0
 
 obj = Solution()
+
+
+
+
+"""
+ row = len(matrix)
+col = len(matrix[0])
+flag = [row[:] for row in matrix]
+for i in range(row):
+    for j in range(col):
+        if flag[i][j] == 0:
+            for c in range(col):
+                matrix[i][c] = 0
+            for r in range(row):
+                matrix[r][j] = 0
+"""

@@ -4,16 +4,16 @@ We have to find next permuatation in lexical format i,e => [1,2,3] => [1,3,2]
 Intution - 
 1) after seeing example we can duduct same logic as other lexical problem in greedy 1053. Previous Permutation With One Swap, Here 
 we have to find next permutation instead of past. 
-2) According to pattern and logic we try to maintain descending order in the last and select pivot element s.t it disrupts descending
+2) According to pattern and logic we try to maintain asceding order from the last and select pivot element s.t it disrupts ascending
 order .
 3) we find a number greater than pivot from the right side of araay and swap it
 4) Later we convert the right subarry of new pivot into ascending order for the ouput
 
 For Eg - 0125330 => [0, 1, 2, 5, 3, 3, 0]
-we can find pivot = '2' since it disrupts decending order
+we can find pivot = '2' since it disrupts ascending order
 now max element greater than pivot is '3' from right
 new array => [0, 1, 3, 5, 3, 2, 0] after swap
-ans array => [0, 1, 3, 0, 2, 3, 5] after sorting subarray
+ans array => [0, 1, 3, 0, 2, 3, 5] after right sorting subarray
 hence 0125330 => 0130235 which is next biggest permutation
 """
 
@@ -31,12 +31,13 @@ class Solution:
 
     def indexOfLastPeak(self, nums, n):
         for i in range(n-1, 0, -1):
+            # if element is smaller and not in ascending order
             if(nums[i] > nums[i-1]):
                 return i-1
         return -1
 
     def maxSubFinder(self, nums, n, pivot):
-        for i in range(n-1, pivot-1, -1):
+        for i in range(n-1, pivot, -1):
             if(nums[i] > nums[pivot]):
                 return i
         return 0

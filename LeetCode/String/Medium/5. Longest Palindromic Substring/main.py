@@ -10,34 +10,34 @@ intution -
 4) for even palindrome we take 2 middle elements i,i+1 and check for biggest element from there
 """
 
-
 class Solution:
-    def longestPalindrome(self, s):
+    def longestPalindrome(self, s: str) -> str:
         res = ""
-        max_len = 0
-        for i in range(len(s)):
-            
-            # for targetting odd palindromes # gabac
+        maxlen = 0
+        n = len(s)
+        
+
+        for i in range(n):
+           
+           # Checking for odd palindrome by giving left and right same
             temp = self.helper(s,i,i)
-            if len(temp) > max_len:
-                max_len = len(temp)
+            if len(temp) > maxlen:
+                maxlen =  len(temp)
                 res = temp
             
-            # instead of i being same its consecative for even palindrome # abbc
+            # Checking for even palindrome by giving left as i and right one increented coz we not taking n-1 in loop 
             temp = self.helper(s,i,i+1)
-            if len(temp) > max_len:
-                max_len = len(temp)
+            if len(temp) > maxlen:
+                maxlen =  len(temp)
                 res = temp
-            
+
         return res
-        
-        
-    def helper(self,s,left,right):
-        while left>=0 and right<len(s) and s[left] == s[right]:
-            left-=1
-            right+=1
-        return s[left+1:right]
-        
-obj = Solution()
-print(obj.longestPalindrome('babad'))
-print(obj.longestPalindrome('cbbd'))
+            
+    def helper(self,s,l,r):
+        res = ""
+        # l+1 coz curent l not good  
+        while(l>=0 and r<len(s) and s[l]==s[r]):
+            res = s[l:r+1]
+            l-=1
+            r+=1
+        return res

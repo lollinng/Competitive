@@ -1,3 +1,11 @@
+"""
+Here we are trying to append elements from two list into ouput list
+using pointers and updating them when an element of that list is inserted
+we then use median formula to calculate the ans from ouput list
+"""
+
+
+
 class Solution:
     def findMedianSortedArrays(self, nums1, nums2):
         l = r = 0

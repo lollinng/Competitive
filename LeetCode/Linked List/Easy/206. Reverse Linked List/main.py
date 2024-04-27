@@ -1,5 +1,14 @@
 """
 Here we change the curr next to previous and iterate our way from head to tail
+
+curr,next , prev
+
+get next value          - next = curr.next         
+make curr next as prev  - curr.next = prev
+make pev as curr        - prev = curr
+make curr as next       - curr = next
+
+
 """
 
 

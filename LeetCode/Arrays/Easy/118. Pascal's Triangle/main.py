@@ -3,7 +3,7 @@
 here we trying to add number in a pascal format.
 
 Solution - 
-1) we create a temp list according to the index of the iteation
+1) we create a temp list according to the index of the iteation with all ones
 2) We append previous itrations values according to the logic of their indeces and itartion values
 """
 

@@ -18,50 +18,26 @@ Solution:
 
 class Solution:
     def compareVersion(self, version1: str, version2: str) -> int:
-        ver1 = version1.split(".")
-        ver2 = version2.split(".")
-        ver1 = [int(i) for i in ver1]
-        ver2 = [int(i) for i in ver2]
+        arr1 ,arr2 = version1.split(".") , version2.split(".")
+        n1 = len(arr1)
+        n2 = len(arr2)
+  
+        for i in range(max(n1,n2)):
 
-        # print(int('001')==int('01'))  
-        n1 = len(ver1)
-        n2 = len(ver2)
-        max_ = max(n1,n2)
-        for i in range(max_):
-
-            # if i>=n1:
-            #     if ver2[i]>0:
-            #         return -1
-            #     continue
-            # elif i>=n2:
-            #     if ver1[i]>0:
-            #         return 1
-            #     continue
-
-            # if ver1[i]>ver2[i]:
-            #     return 1
-            # elif ver2[i]>ver1[i]:
-            #     return -1
-
-
-
-            # Instead of adding extra conditions just add value 0 to non existent 
             if i<n1:
-                a = ver1[i]
+                num1 = int(arr1[i])
             else:
-                a = 0
+                num1 = 0
 
             if i<n2:
-                b = ver2[i]
+                num2 = int(arr2[i])
             else:
-                b = 0
-            
+                num2 = 0
 
-            
-            if  a>b:
+            if num1>num2:
                 return 1
-            elif b>a:
+            elif num1<num2:
                 return -1
-        
+            i+=1
         return 0
         

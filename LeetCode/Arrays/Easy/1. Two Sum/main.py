@@ -9,16 +9,13 @@ index_dict - dict created to store numbers
 """
 
 
-class Solution(object):
+class Solution:
     def twoSum(self, nums, target):
-        index_dict = {}
-
-        for i, num in enumerate(nums):
-            print(num)
-            diff = target - num
-            if diff in index_dict:
-                return([index_dict[diff], i])
-            index_dict[num] = i
+        dict_ = {}
+        for i,ele in enumerate(nums):
+            if ele in dict_:
+                return ([dict_[ele],i])
+            dict_[target - ele] = i
 
 
 # For testing diff cases

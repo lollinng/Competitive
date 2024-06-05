@@ -27,6 +27,5 @@ class Solution:
             # to depict square of a number and dividing x^4 = x^2*x^2
             return recursive_call*recursive_call
 
-
 obj = Solution()
 print(obj.myPow(2, 19))

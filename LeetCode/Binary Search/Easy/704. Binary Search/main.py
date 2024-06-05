@@ -18,6 +18,7 @@ class Solution:
                 low = mid + 1                   # mid is included
             # print(high, low, mid)
         return -1
+        return mid # if we want to return where element can be pushed in array
 
 
 x = Solution()

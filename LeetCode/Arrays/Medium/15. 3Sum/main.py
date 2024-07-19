@@ -16,32 +16,44 @@ STEPS:
 """
 
 class Solution:
-    def threeSum(self, nums):
-        res =  []
+    
+    def twoSumPointer(self,nums,ele1,res):
+        nums_len = len(nums)
+
+        
+        low,high = ele1+1,nums_len-1
+
+        # this aint binary search just normal loop
+        while low<high:
+            mid = nums[ele1] +  nums[low] + nums[high]
+            if mid<0:
+                low+=1
+            elif mid>0:
+                high-=1
+            else:
+                res.append([nums[ele1],nums[low],nums[high]])
+                high-=1
+                low+=1
+                # get rid of duplicates 
+                while low<high and nums[low]==nums[low-1]:
+                    low+=1 
+
+
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        nums_len = len(nums)
+
+        # to avoid duplicate we can sort the array
         nums.sort()
-        for i,c in enumerate(nums[:-2]): 
 
-            # previous element if same and index greater than 0 is skipped (or it takes last element if index -1)
-            if c == nums[i-1] and i>0:    # this step makes sure that we do not have any duplicates in our result output
-                continue 
+        res = []
+        for ele1_index in range(nums_len):
+            
+            # all element greeater then 0 cant make the sum as 0
+            if nums[ele1_index]>0:
+                break
 
-            l = i+1
-            r = len(nums)-1
-            while(l<r):
-                s = nums[l]+nums[r]+nums[i]
-                if s<0:
-                    l+=1
-                elif s>0:
-                    r-=1
-                else:
-                    res.append([c,nums[l],nums[r]])
-                    
-                    # We trying to avoid duplicates hence iterating over them
-                    while l < r and nums[l] == nums[l+1]: #  conditional for not calculating duplicates
-                        l += 1
-                    while l < r and nums[r] == nums[r-1]:  # Avoiding duplicates check
-                        r -= 1
-                    l += 1
-                    r -= 1
-                
+            if ele1_index==0 or nums[ele1_index-1]!=nums[ele1_index]:
+                self.twoSumPointer(nums,ele1_index,res)          
         return res
+                
+

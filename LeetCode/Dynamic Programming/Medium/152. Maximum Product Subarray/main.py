@@ -25,15 +25,34 @@ ans = 144
 
 class Solution:
     def maxProduct(self, nums):
-        res = nums[0]
-        curr_max = 1
-        curr_min = 1
-        for n in nums:
-            temp = curr_max*n
-            curr_max = max(n, curr_max*n, curr_min*n)
-            curr_min = min(n, temp, curr_min*n)
-            res = max(curr_max, res)
-            print(curr_max, curr_min, res)
+        '''
+        in largest product we keep count of negative values
+        since negative multiplication can become poistive later
+        hence we will store minimum product as well as max product
+        we will return max product
+
+        [2,3,-2,4,-6]
+
+        min 2   2  -12  
+        max 2   6   6
+
+        possibilities
+        1) curr_ele is negative , want max_product to multiple with it
+        2) curr_ele is small , 
+        3) curr_ele is big
+
+        '''
+
+        min_product = max_product = res =  nums[0]
+        for num in nums[1:]:
+            
+            if num<0:
+                min_product,max_product = max_product,min_product
+
+            min_product = min(min_product*num,num)
+            max_product = max(max_product*num,num)
+            res = max(res,max_product)
+        
         return res
 
 

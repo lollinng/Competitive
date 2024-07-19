@@ -1,92 +1,61 @@
 class TrieNode:
     def __init__(self):
-        self.childrens = {}
-        self.complete = False
-    
-    def __repr__(self):
-        return str(self.childrens)
-    
+        self.children = {}
+        self.word_end = False
 
-class Solution:
-    """
-    Intuition
 
-    Since list of words can be 4*103 which will be hard to parse through and check if it exists
-    we will use Trie datastructure
-
-    we will iterate throgh matrix use backtracking and perform dfs with trie
-
-    1) Insert the list of words in trie
-    2) iteratre over matrix adn run dfs
-    3) return if current matrix elment not in trie
-    4) keep running dfs on element until we find node.complete marking word competed
-    5) append the word to res if complete
-    6) and keep the recursion going untill it gets out of trie or bounds
-    7) Make sure of backtracking by using visit set
-    8) add characters to found_word at each dfs/trie iteration
-
-    """
+class Trie:
     def __init__(self):
         self.root = TrieNode()
 
     def insert(self,word):
-        curr = self.root
-        
-        for c in word:
-            if c not in curr.childrens:
-                curr.childrens[c] = TrieNode()
-            curr = curr.childrens[c]
-        curr.complete = True
+        curr = self.root 
+        for ch in word:
+            if ch not in curr.children:
+                curr.children[ch] = TrieNode()
+            curr = curr.children[ch]
+        curr.word_end = True
+                
+class Solution:
 
+    def dfs(self,row,col,trie_node,path,visited):
+        rows = len(self.board)
+        cols = len(self.board[0])
+
+
+        if trie_node.word_end:
+            self.res.add(path)
+
+        visited.add((row,col))
+
+        # loop
+        for dx,dy in [(1,0),(-1,0),(0,-1),(0,1)]:
+            x,y = row+dx,col+dy
+            if 0<=x<rows and 0<=y<cols and (x,y) not in visited and self.board[x][y] in trie_node.children:
+                ch = self.board[x][y]
+                self.dfs(x,y,trie_node.children[ch],path+ch,visited)
+        
+        visited.remove((row,col))
 
 
     def findWords(self, board, words):
+        
+        trie = Trie()
+        self.res = set()
+        self.board = board
         rows = len(board)
         cols = len(board[0])
-        word_len = len(words)
-        # inserting to trie
-        for word in words:
-            self.insert(word)
 
-        visit = set() 
-        res = []
-        # backtracking algroithm
-        def dfs(i,j,found_word,node):
-            
+        # run the trie insert
+        for w in words:
+            trie.insert(w)
 
-            # break
-            if i<0 or j<0 or i>=rows or j>=cols or (i,j) in visit or (board[i][j] not in node.childrens):
-                return
-            
-            
+        # loop over the 
+        for row in range(rows):
+            for col in range(cols):
+                ch = board[row][col]
+                if ch in trie.root.children:
+                    visited = set()
+                    self.dfs(row,col,trie.root.children[ch],ch,visited)
 
-            # frontrack
-            visit.add((i,j))
-            found_word += board[i][j]
-            
-            new_node = node.childrens[board[i][j]]
-            # logic done
-            if new_node.complete:
-                if found_word not in res:
-                    res.append(found_word)
-                
-                
-
-            # recursion
-            dfs(i+1,j,found_word,node.childrens[board[i][j]])
-            dfs(i,j+1,found_word,node.childrens[board[i][j]])
-            dfs(i,j-1,found_word,node.childrens[board[i][j]])
-            dfs(i-1,j,found_word,node.childrens[board[i][j]])
-            
-            # backtrack
-            visit.remove((i,j))
-           
-            
-
-
-        curr = self.root
-        for i in range(rows):
-            for j in range(cols):
-                dfs(i,j,"",curr)
-        return res
-
+        return self.res

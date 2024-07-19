@@ -1,27 +1,26 @@
 class Solution:
-    def combinationSum(self, candidate, target):
-        
+    def combinationSum(self, candidates, target) :
+        '''
+        [2,3,5]
+        unlimited combination
+        ''' 
+
         res = []
-        n = len(candidate)
+        no_of_candidates = len(candidates)
 
-        def dfs(start,temp,total):
+        def dfs_on_array_elements(index,path,remaining):
             
-            # acheiving solution
-            if total == target:
-                res.append(temp[:])
+            if remaining == 0:
+                res.append(path)
+                return 
+
+            if remaining<0:
                 return
 
-            # break condition
-            if start>=n or total>target:
-                return
-
-            temp.append(candidate[start])
-            # here we are adding the same index and giving choice to add the element once again
-            dfs(start,temp,total+candidate[start])
-            temp.pop()
-
-            # going to next index without adding current elment
-            dfs(start+1,temp,total)
-
-        dfs(0,[],0)
+            # recursion
+            for i in range(index,no_of_candidates):
+                ele = candidates[i]
+                dfs_on_array_elements(i,path+[ele],remaining-ele)
+            
+        dfs_on_array_elements(0,[],target)
         return res

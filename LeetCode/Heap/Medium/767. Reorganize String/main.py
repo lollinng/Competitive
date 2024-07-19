@@ -29,7 +29,7 @@ pq=[] and res=[a,b,a] => 'aba'
 
 
 class Solution:
-    def reorganizeString(self, s: str) -> str:
+    def reorganizeString(self, s) :
         # counter counts the occurance of of char in string
         res, c = [], Counter(s)
         # print(c)                    # Counter({'a': 2, 'b': 1})

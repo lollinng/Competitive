@@ -1,43 +1,29 @@
-"""
-In this question we try to find the number of ways an Ai agent can go from top side of matrix to bottom right using down and right keys
-We used bottom-up approach and caluclated the ways to go to a cell by adding the prrvious cells memory ways to it
-by doing that we come with a colutino at the bottomost and righmost 2d matrix memoery showing alll the ways to reach it 
-
-question = [[0, 0, 0], [0, 1, 0], [0, 0, 0]]
-answers - 
-[[1, 0, 0], [0, 0, 0], [0, 0, 0]]
-[[1, 1, 0], [0, 0, 0], [0, 0, 0]]
-[[1, 1, 1], [0, 0, 0], [0, 0, 0]]
-[[1, 1, 1], [1, 0, 0], [0, 0, 0]]
-[[1, 1, 1], [1, 0, 1], [0, 0, 0]]
-[[1, 1, 1], [1, 0, 1], [1, 0, 0]]
-[[1, 1, 1], [1, 0, 1], [1, 1, 0]]
-[[1, 1, 1], [1, 0, 1], [1, 1, 2]]
-"""
+from typing import List
 
 
 class Solution:
-    def uniquePathsWithObstacles(self, obstacleGrid):
-        m, n = len(obstacleGrid), len(obstacleGrid[0])
-        dp = [[0]*n for _ in range(m)]
-        # obstacleGrid[0][0] == 0 states that if not obstacle its true and 1 or if obstacle its 0
-        dp[0][0] = int(obstacleGrid[0][0] == 0)
+    def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
+        if obstacleGrid[0][0] == 1:
+            return 0
 
-        for i in range(m):
-            for j in range(n):
+        rows,cols = len(obstacleGrid),len(obstacleGrid[0])
+        dp = [[0 for _ in range(cols)] for _ in range(rows)]
 
-                # If it eccounters a block in the main problem we skip it in memrization
-                if obstacleGrid[i][j] == 1:
-                    continue
+        dp[0][0] = 1
 
-                if i > 0:
-                    dp[i][j] += dp[i-1][j]
-                if j > 0:
-                    dp[i][j] += dp[i][j-1]
-                # print(dp)
-        return dp[m-1][n-1]
+        # get ways for upper row
+        for col in range(1,cols):
+            if obstacleGrid[0][col] != 1:
+                dp[0][col] = dp[0][col-1]
 
+        # get ways for left col
+        for row in range(1,rows):
+            if obstacleGrid[row][0] != 1:
+                dp[row][0] = dp[row-1][0]
 
-s = Solution()
-print(s.uniquePathsWithObstacles([[0, 0, 0], [0, 1, 0], [0, 0, 0]]))
-# ans - 2
+        for row in range(1,rows):
+            for col in range(1,cols):
+                if obstacleGrid[row][col] != 1:
+                    dp[row][col] = dp[row-1][col] + dp[row][col-1] 
+                    
+        return dp[-1][-1]

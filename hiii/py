@@ -1,0 +1,21 @@
+ arr.sort()
+        mp = {}
+        mex = 0
+        mins = 9999999
+        sets = set()
+        for ger in arr:
+            sets.add(ger)
+            if ger in mp:
+                mp[ger] += 1
+            else:
+                mp[ger] = 1
+        while mex in sets:
+            mex += 1
+
+        for key in mp.keys():
+            if(key<mex):
+                mins = min(mins,mp[key])
+        if mins==9999999:
+            return -1
+        else:
+            return mins

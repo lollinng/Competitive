@@ -1,45 +1,57 @@
+import heapq
+
+
 class MedianFinder:
     
-    """
-    Intution:
-    We have to find median of an array but in most optimal time
-    Hence we add the array such that the left portion of median is max_heap and left portion is min_heap
-    So we return the left maximum when elemetns odd  as median and avg top of heap if list is even
+    '''
+    Creating 2 heaps , and divide arra , left will be max heap and right will be min
+    1) If number is odd the ans will top element of left heap
+    2) if len is even the ans will be avg of top elements
+    
+    # handling heaps
+    1) if new number comes it goes to left heap
+    2) if left is +2 then right then left is pop and added to right
 
-    first 
-    1) We add element to left heap 
-    2) pop the maximum element(max_heap) add it to right heap
-    3) if right len is > left heap pop smallest elmenet and add it to left_heap
-    4) this will helps us get median as left heap top when odd number elments 
-        or unequal elements in both left heap will be greater or equal to righ heap by 1
-    5) if both heap equal return the avg of both top heaps as median
-    """
+    3) if number is greater then left max then add to right
+    and then if right becomes greater pop it and add one ele to left
 
+    4) if number is samller then left max add it to left if it becomes 2 greater 
+    pop it and add it to right
+    '''
     def __init__(self):
-        self.left_heap = [] # max heap
-        self.right_heap = [] # min heao
+        self.left_max_heap = []
+        self.right_min_heap = []
+
+    def addNum(self, num: int) :
+   
+        if not self.left_max_heap or num<=-self.left_max_heap[0]:
+            heapq.heappush(self.left_max_heap,-num)
+        else:
+            heapq.heappush(self.right_min_heap,num)
 
 
-    def addNum(self, num: int) -> None:
-        r_len = len(self.right_heap)
-        l_len = len(self.left_heap)
+        # balance the heap if necessaary
+        left_heap_len = len(self.left_max_heap)
+        right_heap_len = len(self.right_min_heap)
         
-        heapq.heappush(self.left_heap,-num)
-        heapq.heappush(self.right_heap,-self.left_heap[0])
-        heapq.heappop(self.left_heap)
+        if  left_heap_len> right_heap_len+1:
+            value = -heapq.heappop(self.left_max_heap)
+            heapq.heappush(self.right_min_heap,value)
 
-        if len(self.right_heap) > len(self.left_heap):
-            heapq.heappush(self.left_heap,-self.right_heap[0])
-            heapq.heappop(self.right_heap)
+        elif left_heap_len < right_heap_len:
+            value = heapq.heappop(self.right_min_heap)
+            heapq.heappush(self.left_max_heap,-value)
+        
         
     def findMedian(self) -> float:
-        r_len = len(self.right_heap)
-        l_len = len(self.left_heap)
-        if r_len==l_len:
-            return (-self.left_heap[0]+self.right_heap[0])/2
-        else:
-            return -self.left_heap[0]
-               
+
+        left_heap_len = len(self.left_max_heap)
+        right_heap_len = len(self.right_min_heap)
+
+        if left_heap_len > right_heap_len:
+            return -self.left_max_heap[0]
+
+        return (-self.left_max_heap[0]+self.right_min_heap[0])/2
 
 
 # Your MedianFinder object will be instantiated and called as such:

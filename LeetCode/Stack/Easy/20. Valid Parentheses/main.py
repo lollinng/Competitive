@@ -1,5 +1,5 @@
 class Solution:
-    def isValid(self, s: str) -> bool:
+    def isValid(self, s):
         if len(s)<2:
             return False
 
